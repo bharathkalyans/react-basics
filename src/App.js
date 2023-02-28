@@ -1,11 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Sidebar from "./components/Sidebar";
 
-
-
-function App(props) {
+function App() {
   return (
-    <h1>Your name is :: {props.name}</h1>
+    <div>
+      <Header name="Bharath" color="purple" />
+      <Main greet="Howdy" />
+      <Sidebar greet="Hi" />
+    </div>
   );
 }
 
