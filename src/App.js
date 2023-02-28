@@ -5,11 +5,13 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div>
+    <>
       <Header name="Bharath" color="purple" />
-      <Main greet="Howdy" />
-      <Sidebar greet="Hi" />
-    </div>
+      <div>
+        <Main greet="Howdy" />
+        <Sidebar greet="Hi" />
+      </div>
+    </>
   );
 }
 

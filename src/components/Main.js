@@ -1,7 +1,7 @@
 import React from "react";
 
-function Main(props) {
-  return <h2>{props.greet}</h2>;
+function Main() {
+  return <h2>MAIN CONTENT</h2>;
 }
 
 export default Main;
