@@ -1,11 +1,12 @@
 import "./App.css";
-import Btn from "./components/Btn";
-
+import Child from "./components/Child";
 function App() {
+  const date = new Date();
+
   return (
-    <div>
-      <Btn />
-    </div>
+    <>
+      <Child message={date.toLocaleDateString()} />
+    </>
   );
 }
 
