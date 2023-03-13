@@ -1,58 +1,43 @@
 import "./App.css";
+import { useState } from "react";
 
-
-function Item({ name, isPacked }) {
-  if (isPacked) {
-    return <li style={{ color: "blue" }}>{name} ✅</li>;
-  } else {
-    return <li>{name}</li>;
-  }
-}
-
-function MyList() {
-  const people = [
-    {
-      id: 0,
-      name: "Creola Katherine Johnson",
-      profession: "mathematician",
-    },
-    {
-      id: 1,
-      name: "Mario José Molina-Pasquel Henríquez",
-      profession: "chemist",
-    },
-    {
-      id: 2,
-      name: "Mohammad Abdus Salam",
-      profession: "physicist",
-    },
-    {
-      name: "Percy Lavon Julian",
-      profession: "chemist",
-    },
-    {
-      name: "Subrahmanyan Chandrasekhar",
-      profession: "astrophysicist",
-    },
-  ];
-
-  const chemists = people.filter((person) => person.profession === "chemist");
-
-  const listItems = chemists.map((item) => <li>{item.name}</li>);
-
-  return <ol>{listItems}</ol>;
-}
+import { sculptureList } from "./components/data";
 
 function App() {
+  // const chemists = people.filter((person) => person.profession === "chemist");
+  // const listItems = sculptureList.map((item) => <li>{item.name}</li>);
+  // return <ol>{listItems}</ol>;
+
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+
+  function handleNextClick() {
+    setIndex((index + 1) % sculptureList.length);
+    setShowMore(false);
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  let sculpture = sculptureList[index];
+
   return (
     <div>
-      <section>
-        <h1>Sally Ride's Packing List</h1>
-        <Item name="apple" isPacked={true} />
-        <Item name="banana" isPacked={true} />
-        <Item name="orange" isPacked={false} />
-      </section>
-      <MyList />
+      <button onClick={handleNextClick}>Next</button>
+      <h1>
+        <i>{sculpture.name}</i>
+      </h1>
+      <h5> - {sculpture.artist}</h5>
+      <h6>
+        ({index + 1} of {sculptureList.length})
+      </h6>
+      <button onClick={handleMoreClick}>
+        {showMore ? "Hide Details" : "Show Details"}
+      </button>
+      <br />
+      {showMore && <p>{sculpture.description}</p>}
+      <img src={sculpture.url} alt={sculpture.alt}></img>
     </div>
   );
 }
