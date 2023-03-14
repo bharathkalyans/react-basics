@@ -4,9 +4,7 @@ import { useState } from "react";
 import { sculptureList } from "./components/data";
 
 function App() {
-  // const chemists = people.filter((person) => person.profession === "chemist");
-  // const listItems = sculptureList.map((item) => <li>{item.name}</li>);
-  // return <ol>{listItems}</ol>;
+
 
   const [index, setIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
